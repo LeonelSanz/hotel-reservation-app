@@ -41,7 +41,7 @@ function HotelList() {
                                 title={hotel.name}
                             />
                             <CardContent>
-                                <Typography gutterButton variant="h5" component="div">
+                                <Typography gutterBottom variant="h5" component="div">
                                     {hotel.name}
                                 </Typography>
                                 <Typography variant="body2" color="text.secondary">

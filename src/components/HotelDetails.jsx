@@ -13,15 +13,15 @@ const fetchHotel = async (id) => {
     return res.json();
 }
 
-function HotelDetails() {
+const HotelDetails = () => {
     const [match, params] = useRoute("/hotel/:id");
     const {
         data: hotel,
         isLoading,
         error,
     } = useQuery({
-        queryKey: ["hotel", params.id],
-        queryFn: () => fetchHotel(params.id)
+        queryKey: ["hotel", params?.id],
+        queryFn: () => fetchHotel(params?.id)
     });
 
     if (isLoading) {
@@ -29,14 +29,14 @@ function HotelDetails() {
     }
 
     if (error) {
-        return <div>Error fetching Hotels! {error.message}</div>
+        return <div>Error fetching Hotel! {error.message}</div>
     }
 
     return (
         <Card sx={{ maxWidth: 345, backgroundColor: "#e8e8e8" }}>
             <CardMedia sx={{ height: 140 }} image={hotel.img} title={hotel.name} />
             <CardContent>
-                <Typography gutterButton variant="h5" component="div">
+                <Typography gutterBottom variant="h5" component="div">
                     {hotel.name}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
@@ -47,7 +47,7 @@ function HotelDetails() {
                 <BookingForm hotel={hotel} />
             </CardActions>
         </Card>
-    )
-}
+    );
+};
 
 export default HotelDetails;
